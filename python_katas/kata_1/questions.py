@@ -28,7 +28,14 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+
+    if word.endswith("ing"):
+        return word + "ly"
+
+    if len(word) >= 3:
+        return word + "ing"
+    else:
+        return word
 
 
 def words_concatenation(words):
@@ -43,7 +50,8 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+
+    return " ".join(words)
 
 
 def reverse_words_concatenation(words):
@@ -58,7 +66,8 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    words.reverse()
+    return " ".join(words)
 
 
 def is_unique_string(some_str):
@@ -363,4 +372,3 @@ if __name__ == '__main__':
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
-
