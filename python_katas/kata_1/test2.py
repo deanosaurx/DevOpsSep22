@@ -3,7 +3,7 @@ import questions
 import sys
 
 
-testers = ['']
+testers = ["Dean", "bibi", "Arik", "Gad", "Rosin"]
 
 class TestSumOfElements(unittest.TestCase):
     """
@@ -14,16 +14,12 @@ class TestSumOfElements(unittest.TestCase):
         lst = []
         self.assertEqual(questions.sum_of_element(lst), 0)
 
-
-    def test_integers_list(self):
         lst = [1, 2, 3, 4, 5]
         self.assertEqual(questions.sum_of_element(lst), 15)
 
-    def test_negative_numbers(self):
         lst = [1, -6, 7, 0, 99]
         self.assertEqual(questions.sum_of_element(lst), 101)
 
-    def test_all_zeros(self):
         lst = [0] * 50000
         self.assertEqual(questions.sum_of_element(lst), 0)
 
@@ -32,33 +28,71 @@ class TestVerbing(unittest.TestCase):
     1 Katas
     """
 
-    def testSmallChar(self):
+    def testChars(self):
         shortStringTest = "ha"
         self.assertEqual(questions.verbing(shortStringTest), "ha")
 
-    def testAddIng(self):
         addIngTest = "spray"
         self.assertEqual(questions.verbing(addIngTest), "spraying")
-    
-    def testAddLy(self):
+
         addLyTest = "amazing"
         self.assertEqual(questions.verbing(addLyTest), "amazingly")
-    
-    def testEmptyString(self):
+
         testEmptyString = ""
         self.assertEqual(questions.verbing(testEmptyString), "")
 
 
-class TestWordsConcatenation(unittest.TestCase):
+class TestWordsConcat(unittest.TestCase):
     """
     1 Katas
     """
 
     def testSimpleSentence(self):
-        testThreeWords = ["take", "me", "home"]
-        self.assertEqual(questions.words_concatenation(testThreeWords), "take me home")
+        testWords = ["take", "on", "me"]
+        self.assertEqual(questions.words_concatenation(testWords), "take on me")
+
+        testWords = ["hi", "mom"]
+        self.assertEqual(questions.words_concatenation(testWords), "hi mom")
+
+        testWords = []
+        self.assertEqual(questions.words_concatenation(testWords), "")
+
+        testWords = 1
+        self.assertRaises(TypeError, questions.words_concatenation ,testWords )
 
     
+class TestReverseWordConcat(unittest.TestCase):
+    """
+    1 Katas
+    """
+
+    def testReverseWordsConcatination(self):
+        testReverseWord = ["hello", "my", "friend"]
+        self.assertEqual(questions.reverse_words_concatenation(testReverseWord), "friend my hello")
+
+        testReverseWord = []
+        self.assertEqual(questions.reverse_words_concatenation(testReverseWord), "")
+
+class TestUniqeString(unittest.TestCase):
+    """
+    2 Katas
+    """
+
+    def testIsUniqueString(self):
+        testUnique = "abcdef"
+        self.assertEqual(questions.is_unique_string(testUnique), True)
+
+class TestDiffList(unittest.TestCase):
+    """
+    1 Katas
+    """
+    def testDiffList(self):
+        listToDiff = [1, 3, 6, 10, 14, 25]
+        self.assertEquals(questions.list_diff(listToDiff), [2, 3, 4, 4, 11])
+
+        listToDiff = [4, 1, 7, 2, 11, 0]
+        self.assertEqual(questions.list_diff(listToDiff), [-3, 6, -5, 9, -11])
+
 
 if __name__ == "__main__":
   suite = unittest.TestLoader().loadTestsFromModule( sys.modules[__name__] )

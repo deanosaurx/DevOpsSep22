@@ -84,7 +84,16 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    castSet = list(set(some_str))
+    castList = list(some_str)
+
+    castSet.sort()
+    castList.sort()
+
+    if castSet == castList:
+        return True
+
+    return False
 
 
 def list_diff(elements):
@@ -102,7 +111,8 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+    diffList = [elements[i+1] - elements[i] for i in range(len(elements)-1)]
+    return diffList
 
 
 def prime_number(num):
